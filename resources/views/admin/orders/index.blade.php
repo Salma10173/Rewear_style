@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Orders')
+@section('title','Commandes')
 
 @section('content')
 
@@ -8,18 +8,18 @@
     <div class="card-body p-3">
         <form method="GET" class="d-flex gap-2 flex-wrap align-items-center">
             <input type="text" name="search" class="form-control" style="max-width:220px"
-                   placeholder="Order number…" value="{{ request('search') }}">
+                   placeholder="Numéro de commande…" value="{{ request('search') }}">
             <select name="status" class="form-select" style="max-width:160px" onchange="this.form.submit()">
-                <option value="">All Statuses</option>
+                <option value="">Tous les statuts</option>
                 @foreach(\App\Models\Order::STATUSES as $status)
                     <option value="{{ $status }}" {{ request('status') === $status ? 'selected':'' }}>
                         {{ ucfirst($status) }}
                     </option>
                 @endforeach
             </select>
-            <button class="btn btn-accent">Search</button>
+            <button class="btn btn-accent">Rechercher</button>
             @if(request()->hasAny(['search','status']))
-                <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary">Clear</a>
+                <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary">Effacer</a>
             @endif
         </form>
     </div>
@@ -30,13 +30,13 @@
         <table class="table mb-0">
             <thead>
                 <tr>
-                    <th>Order #</th>
-                    <th>Customer</th>
+                    <th>N° de commande</th>
+                    <th>Client</th>
                     <th>Date</th>
-                    <th>Items</th>
+                    <th>Articles</th>
                     <th>Total</th>
-                    <th>Payment</th>
-                    <th>Status</th>
+                    <th>Paiement</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -61,12 +61,12 @@
                         </span>
                     </td>
                     <td>
-                        <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-accent">View</a>
+                        <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-accent">Voir</a>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="8" class="text-center text-muted py-5">No orders found.</td>
+                    <td colspan="8" class="text-center text-muted py-5">Aucune commande trouvée.</td>
                 </tr>
                 @endforelse
             </tbody>

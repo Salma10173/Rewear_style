@@ -34,7 +34,7 @@ class CategoryController extends Controller
         Category::create($data);
 
         return redirect()->route('admin.categories.index')
-                         ->with('success', 'Category created successfully.');
+                         ->with('success', 'Catégorie créée avec succès.');
     }
 
     public function edit(Category $category)
@@ -56,19 +56,19 @@ class CategoryController extends Controller
         $category->update($data);
 
         return redirect()->route('admin.categories.index')
-                         ->with('success', 'Category updated successfully.');
+                         ->with('success', 'Catégorie mise à jour avec succès.');
     }
 
     public function destroy(Category $category)
     {
         if ($category->products()->count() > 0) {
             return redirect()->route('admin.categories.index')
-                             ->with('error', 'Cannot delete a category that has products.');
+                             ->with('error', 'Impossible de supprimer une catégorie qui contient des produits.');
         }
 
         $category->delete();
 
         return redirect()->route('admin.categories.index')
-                         ->with('success', 'Category deleted.');
+                         ->with('success', 'Catégorie supprimée.');
     }
 }

@@ -29,12 +29,12 @@
                             <textarea name="description" class="form-control" rows="3">{{ old('description', $product->description) }}</textarea>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-medium">Price ($) *</label>
+                            <label class="form-label fw-medium">Price (DH) *</label>
                             <input type="number" name="price" step="0.01" min="0" class="form-control"
                                    value="{{ old('price', $product->price) }}" required>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-medium">Sale Price ($)</label>
+                            <label class="form-label fw-medium">Sale Price (DH)</label>
                             <input type="number" name="sale_price" step="0.01" min="0" class="form-control"
                                    value="{{ old('sale_price', $product->sale_price) }}">
                         </div>

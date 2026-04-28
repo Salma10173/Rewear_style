@@ -30,11 +30,11 @@
 
             <div class="my-3" style="font-size:1.5rem">
                 @if($product->sale_price)
-                    <span style="color:#c4786a;font-weight:600">${{ number_format($product->sale_price,2) }}</span>
-                    <span style="text-decoration:line-through;color:#aaa;font-size:1rem;margin-left:.5rem">${{ number_format($product->price,2) }}</span>
+                    <span style="color:#c4786a;font-weight:600">DH{{ number_format($product->sale_price,2) }}</span>
+                    <span style="text-decoration:line-through;color:#aaa;font-size:1rem;margin-left:.5rem">DH{{ number_format($product->price,2) }}</span>
                     <span class="badge-sale ms-2">SALE</span>
                 @else
-                    <span>${{ number_format($product->price,2) }}</span>
+                    <span>DH{{ number_format($product->price,2) }}</span>
                 @endif
             </div>
 
@@ -86,7 +86,7 @@
             </form>
 
             <div class="mt-4 pt-4 border-top" style="font-size:.82rem;color:#7a5c4e">
-                <p><i class="fa fa-truck me-2"></i>Free shipping on orders over $100</p>
+                <p><i class="fa fa-truck me-2"></i>Free shipping on orders over DH100</p>
                 <p><i class="fa fa-rotate-left me-2"></i>Easy 14-day returns</p>
                 <p class="mb-0"><i class="fa fa-shield me-2"></i>Secure checkout</p>
             </div>
@@ -110,7 +110,7 @@
                     </a>
                     <div class="card-body">
                         <h6 class="mb-1"><a href="{{ route('shop.show', $rel) }}" style="color:#2c1a12;text-decoration:none">{{ $rel->name }}</a></h6>
-                        <div class="price">${{ number_format($rel->effective_price,2) }}</div>
+                        <div class="price">DH{{ number_format($rel->effective_price,2) }}</div>
                     </div>
                 </div>
             </div>

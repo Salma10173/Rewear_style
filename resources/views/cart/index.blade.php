@@ -33,7 +33,7 @@
                                     @if($item['size']) Size: {{ $item['size'] }} @endif
                                     @if($item['color']) · Color: {{ $item['color'] }} @endif
                                 </small>
-                                <div class="mt-1" style="font-weight:600">${{ number_format($item['price'],2) }}</div>
+                                <div class="mt-1" style="font-weight:600">DH{{ number_format($item['price'],2) }}</div>
                             </div>
                             <div class="col-4 col-md-4 d-flex align-items-center justify-content-end gap-2">
                                 <form action="{{ route('cart.update', $key) }}" method="POST" class="d-flex align-items-center gap-1">
@@ -69,19 +69,19 @@
                         @php $shipping = $total >= 100 ? 0 : 5.99; @endphp
                         <div class="d-flex justify-content-between mb-2">
                             <span>Subtotal</span>
-                            <span>${{ number_format($total,2) }}</span>
+                            <span>DH{{ number_format($total,2) }}</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span>Shipping</span>
-                            <span>{{ $shipping == 0 ? 'Free' : '$'.number_format($shipping,2) }}</span>
+                            <span>{{ $shipping == 0 ? 'Free' : 'DH'.number_format($shipping,2) }}</span>
                         </div>
                         @if($shipping > 0)
-                            <p class="text-muted" style="font-size:.78rem">Add ${{ number_format(100-$total,2) }} more for free shipping</p>
+                            <p class="text-muted" style="font-size:.78rem">Add DH{{ number_format(100-$total,2) }} more for free shipping</p>
                         @endif
                         <hr>
                         <div class="d-flex justify-content-between mb-4 fw-bold" style="font-size:1.1rem">
                             <span>Total</span>
-                            <span>${{ number_format($total+$shipping,2) }}</span>
+                            <span>DH{{ number_format($total+$shipping,2) }}</span>
                         </div>
                         @auth
                             <a href="{{ route('orders.checkout') }}" class="btn btn-rewear w-100 py-3">Proceed to Checkout</a>

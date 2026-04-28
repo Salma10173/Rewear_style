@@ -31,7 +31,7 @@
                             <td class="fw-medium">{{ $order->order_number }}</td>
                             <td>{{ $order->created_at->format('d M Y') }}</td>
                             <td>{{ $order->items->count() }} item(s)</td>
-                            <td>${{ number_format($order->total,2) }}</td>
+                            <td>DH{{ number_format($order->total,2) }}</td>
                             <td>
                                 <span class="badge badge-{{ $order->status }} px-3 py-2" style="border-radius:0;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em">
                                     {{ ucfirst($order->status) }}

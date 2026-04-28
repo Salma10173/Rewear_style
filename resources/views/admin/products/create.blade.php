@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', isset($product) ? 'Edit Product' : 'Add Product')
+@section('title', isset($product) ? 'Modifier le produit' : 'Ajouter un produit')
 
 @section('content')
 <div class="row justify-content-center">
@@ -13,15 +13,15 @@
 
                     <div class="row g-3">
                         <div class="col-md-8">
-                            <label class="form-label fw-medium">Product Name *</label>
+                            <label class="form-label fw-medium">Nom du produit *</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                    value="{{ old('name', $product->name ?? '') }}" required>
                             @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-medium">Category *</label>
+                            <label class="form-label fw-medium">Catégorie *</label>
                             <select name="category_id" class="form-select @error('category_id') is-invalid @enderror" required>
-                                <option value="">Select…</option>
+                                <option value="">Sélectionner…</option>
                                 @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}" {{ old('category_id', $product->category_id ?? '') == $cat->id ? 'selected':'' }}>
                                         {{ $cat->name }}
@@ -37,14 +37,14 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label fw-medium">Price ($) *</label>
+                            <label class="form-label fw-medium">Prix (DH) *</label>
                             <input type="number" name="price" step="0.01" min="0"
                                    class="form-control @error('price') is-invalid @enderror"
                                    value="{{ old('price', $product->price ?? '') }}" required>
                             @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-medium">Sale Price ($)</label>
+                            <label class="form-label fw-medium">Prix de vente (DH)</label>
                             <input type="number" name="sale_price" step="0.01" min="0"
                                    class="form-control" value="{{ old('sale_price', $product->sale_price ?? '') }}">
                         </div>
@@ -57,22 +57,22 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-medium">Sizes <small class="text-muted">(comma-separated)</small></label>
+                            <label class="form-label fw-medium">Tailles <small class="text-muted">(séparées par des virgules)</small></label>
                             <input type="text" name="sizes" class="form-control" placeholder="XS,S,M,L,XL"
                                    value="{{ old('sizes', $product->sizes ?? '') }}">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-medium">Colors <small class="text-muted">(comma-separated)</small></label>
-                            <input type="text" name="colors" class="form-control" placeholder="Black,White,Pink"
+                            <label class="form-label fw-medium">Couleurs <small class="text-muted">(séparées par des virgules)</small></label>
+                            <input type="text" name="colors" class="form-control" placeholder="Noir,Blanc,Rose"
                                    value="{{ old('colors', $product->colors ?? '') }}">
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label fw-medium">Product Image</label>
+                            <label class="form-label fw-medium">Image du produit</label>
                             @if(isset($product) && $product->image)
                                 <div class="mb-2">
                                     <img src="{{ asset('storage/'.$product->image) }}" style="height:100px;object-fit:cover" alt="">
-                                    <small class="text-muted d-block">Upload a new image to replace</small>
+                                    <small class="text-muted d-block">Téléchargez une nouvelle image pour remplacer</small>
                                 </div>
                             @endif
                             <input type="file" name="image" class="form-control" accept="image/*">
@@ -82,23 +82,23 @@
                             <div class="form-check form-switch mt-2">
                                 <input class="form-check-input" type="checkbox" name="is_featured" id="is_featured" value="1"
                                        {{ old('is_featured', $product->is_featured ?? false) ? 'checked':'' }}>
-                                <label class="form-check-label" for="is_featured">Featured Product</label>
+                                <label class="form-check-label" for="is_featured">Produit en vedette</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-check form-switch mt-2">
                                 <input class="form-check-input" type="checkbox" name="is_active" id="is_active" value="1"
                                        {{ old('is_active', $product->is_active ?? true) ? 'checked':'' }}>
-                                <label class="form-check-label" for="is_active">Active (Visible in store)</label>
+                                <label class="form-check-label" for="is_active">Actif (Visible dans la boutique)</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex gap-2 mt-4">
                         <button type="submit" class="btn btn-accent px-4">
-                            {{ isset($product) ? 'Update Product' : 'Create Product' }}
+                            {{ isset($product) ? 'Mettre à jour le produit' : 'Créer un produit' }}
                         </button>
-                        <a href="{{ route('admin.products.index') }}" class="btn btn-outline-secondary">Cancel</a>
+                        <a href="{{ route('admin.products.index') }}" class="btn btn-outline-secondary">Annuler</a>
                     </div>
                 </form>
             </div>

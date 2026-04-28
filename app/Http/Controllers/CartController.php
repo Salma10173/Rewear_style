@@ -52,7 +52,7 @@ class CartController extends Controller
 
         $this->saveCart($cart);
 
-        return redirect()->back()->with('success', '"' . $product->name . '" added to your cart.');
+        return redirect()->back()->with('success', '"' . $product->name . '" ajouté à votre panier.');
     }
 
     public function update(Request $request, string $key)
@@ -66,7 +66,7 @@ class CartController extends Controller
             $this->saveCart($cart);
         }
 
-        return redirect()->route('cart.index')->with('success', 'Cart updated.');
+        return redirect()->route('cart.index')->with('success', 'Panier mis à jour.');
     }
 
     public function remove(string $key)
@@ -75,12 +75,12 @@ class CartController extends Controller
         unset($cart[$key]);
         $this->saveCart($cart);
 
-        return redirect()->route('cart.index')->with('success', 'Item removed from cart.');
+        return redirect()->route('cart.index')->with('success', 'Article retiré du panier.');
     }
 
     public function clear()
     {
         session()->forget('cart');
-        return redirect()->route('cart.index')->with('success', 'Cart cleared.');
+        return redirect()->route('cart.index')->with('success', 'Panier vidé.');
     }
 }

@@ -29,7 +29,7 @@ class OrderController extends Controller
     public function checkout()
     {
         $cart = session('cart', []);
-        abort_if(empty($cart), 302, redirect()->route('cart.index')->with('error', 'Your cart is empty.'));
+        abort_if(empty($cart), 302, redirect()->route('cart.index')->with('error', 'Votre panier est vide.'));
 
         $total = collect($cart)->sum(fn($i) => $i['price'] * $i['quantity']);
         return view('orders.checkout', compact('cart', 'total'));
@@ -85,6 +85,6 @@ class OrderController extends Controller
         session()->forget('cart');
 
         return redirect()->route('orders.show', $order)
-                         ->with('success', 'Order #' . $order->order_number . ' placed successfully!');
+                         ->with('success', 'Commande #' . $order->order_number . ' passée avec succès !');
     }
 }

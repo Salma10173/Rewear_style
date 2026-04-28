@@ -38,6 +38,6 @@ class OrderController extends Controller
 
         $order->update(['status' => $request->status]);
 
-        return redirect()->back()->with('success', 'Order status updated to "' . ucfirst($request->status) . '".');
+        return redirect()->back()->with('success', 'Statut de la commande mis à jour à "' . ucfirst($request->status) . '".');
     }
 }

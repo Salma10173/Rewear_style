@@ -1,11 +1,11 @@
 @extends('layouts.admin')
-@section('title', 'Order ' . $order->order_number)
+@section('title', 'Commande ' . $order->order_number)
 
 @section('content')
 
 <div class="d-flex align-items-center justify-content-between mb-4">
     <a href="{{ route('admin.orders.index') }}" class="btn btn-outline-secondary btn-sm">
-        ← Back to Orders
+        ← Retour aux commandes
     </a>
     <span class="badge badge-{{ $order->status }} px-3 py-2"
           style="border-radius:3px;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em">
@@ -20,17 +20,17 @@
         <div class="card border-0 shadow-sm mb-4" style="border-radius:6px">
             <div class="card-body p-4">
                 <h6 class="fw-semibold mb-3" style="text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:#7a5c4e">
-                    Order Items
+                    Articles de la commande
                 </h6>
                 <div class="table-responsive">
                     <table class="table mb-0">
                         <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Size / Color</th>
-                                <th>Price</th>
-                                <th>Qty</th>
-                                <th class="text-end">Subtotal</th>
+                                <th>Produit</th>
+                                <th>Taille / Couleur</th>
+                                <th>Prix</th>
+                                <th>Qté</th>
+                                <th class="text-end">Sous-total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,27 +52,27 @@
                                 <td style="font-size:.82rem;color:#7a5c4e">
                                     {{ $item->size ?? '—' }} / {{ $item->color ?? '—' }}
                                 </td>
-                                <td>${{ number_format($item->product_price, 2) }}</td>
+                                <td>DH{{ number_format($item->product_price, 2) }}</td>
                                 <td>{{ $item->quantity }}</td>
-                                <td class="text-end fw-medium">${{ number_format($item->subtotal, 2) }}</td>
+                                <td class="text-end fw-medium">DH{{ number_format($item->subtotal, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4" class="text-end text-muted" style="font-size:.85rem">Subtotal</td>
-                                <td class="text-end">${{ number_format($order->subtotal, 2) }}</td>
+                                <td colspan="4" class="text-end text-muted" style="font-size:.85rem">Sous-total</td>
+                                <td class="text-end">DH{{ number_format($order->subtotal, 2) }}</td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="text-end text-muted" style="font-size:.85rem">Shipping</td>
+                                <td colspan="4" class="text-end text-muted" style="font-size:.85rem">Livraison</td>
                                 <td class="text-end">
-                                    {{ $order->shipping == 0 ? 'Free' : '$' . number_format($order->shipping, 2) }}
+                                    {{ $order->shipping == 0 ? 'Gratuit' : 'DH' . number_format($order->shipping, 2) }}
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="4" class="text-end fw-bold">Total</td>
                                 <td class="text-end fw-bold" style="font-size:1.1rem;color:#c4786a">
-                                    ${{ number_format($order->total, 2) }}
+                                    DH{{ number_format($order->total, 2) }}
                                 </td>
                             </tr>
                         </tfoot>
@@ -86,7 +86,7 @@
         <div class="card border-0 shadow-sm" style="border-radius:6px">
             <div class="card-body p-4">
                 <h6 class="fw-semibold mb-2" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#7a5c4e">
-                    Customer Notes
+                    Notes du client
                 </h6>
                 <p class="mb-0 text-muted">{{ $order->notes }}</p>
             </div>
@@ -101,7 +101,7 @@
         <div class="card border-0 shadow-sm mb-3" style="border-radius:6px">
             <div class="card-body p-4">
                 <h6 class="fw-semibold mb-3" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#7a5c4e">
-                    Update Status
+                    Mettre à jour le statut
                 </h6>
                 <form action="{{ route('admin.orders.updateStatus', $order) }}" method="POST">
                     @csrf @method('PATCH')
@@ -112,7 +112,7 @@
                             </option>
                         @endforeach
                     </select>
-                    <button class="btn btn-accent w-100">Update Status</button>
+                    <button class="btn btn-accent w-100">Mettre à jour le statut</button>
                 </form>
 
                 {{-- Status timeline --}}
@@ -142,7 +142,7 @@
                         <div style="width:22px;height:22px;border-radius:50%;background:#f8d7da;display:flex;align-items:center;justify-content:center">
                             <i class="fa fa-times" style="font-size:.6rem;color:#842029"></i>
                         </div>
-                        <span style="font-size:.82rem;color:#842029">Cancelled</span>
+                        <span style="font-size:.82rem;color:#842029">Annulé</span>
                     </div>
                     @endif
                 </div>
@@ -153,7 +153,7 @@
         <div class="card border-0 shadow-sm mb-3" style="border-radius:6px">
             <div class="card-body p-4">
                 <h6 class="fw-semibold mb-3" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#7a5c4e">
-                    Customer
+                    Client
                 </h6>
                 <p class="mb-1 fw-medium">{{ $order->user->name }}</p>
                 <p class="mb-1 text-muted" style="font-size:.85rem">{{ $order->user->email }}</p>
@@ -165,7 +165,7 @@
         <div class="card border-0 shadow-sm mb-3" style="border-radius:6px">
             <div class="card-body p-4">
                 <h6 class="fw-semibold mb-3" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#7a5c4e">
-                    Shipping Address
+                    Adresse de livraison
                 </h6>
                 <p class="mb-1 fw-medium">{{ $order->shipping_name }}</p>
                 <p class="mb-1 text-muted" style="font-size:.85rem">{{ $order->shipping_phone }}</p>
@@ -181,11 +181,11 @@
         <div class="card border-0 shadow-sm" style="border-radius:6px">
             <div class="card-body p-4">
                 <h6 class="fw-semibold mb-2" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#7a5c4e">
-                    Payment
+                    Paiement
                 </h6>
                 <p class="mb-1">{{ ucwords(str_replace('_', ' ', $order->payment_method)) }}</p>
                 <p class="mb-0 text-muted" style="font-size:.8rem">
-                    Placed {{ $order->created_at->format('d M Y, H:i') }}
+                    Passé le {{ $order->created_at->format('d M Y, H:i') }}
                 </p>
             </div>
         </div>

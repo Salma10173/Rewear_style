@@ -9,11 +9,11 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <p style="letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:#c4786a">New Collection 2025</p>
+                <p style="letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:#c4786a">New Collection 2026</p>
                 <h1 style="font-family:'Cormorant Garamond',serif;font-size:3.8rem;line-height:1.1;color:#2c1a12">
-                    Dress for<br><em>the Woman</em><br>You Are
+                    Wear it again<br><em>Love it</em><br> more
                 </h1>
-                <p class="mt-3 mb-4" style="color:#5a3e34;max-width:400px">Curated pieces that celebrate femininity, crafted with intention and worn with confidence.</p>
+                <p class="mt-3 mb-4" style="color:#5a3e34;max-width:400px">Une sélection raffinée de pièces issues de marques reconnues, soigneusement choisies pour allier style, qualité et confiance.</p>
                 <a href="{{ route('shop.index', ['sort'=>'newest']) }}" class="btn btn-rewear me-2">Shop Now</a>
                 <a href="{{ route('shop.index', ['category'=>'dresses']) }}" class="btn btn-outline-rewear">Explore Dresses</a>
             </div>
@@ -89,10 +89,10 @@
                         <h6 class="mb-1"><a href="{{ route('shop.show', $product) }}" style="color:#2c1a12;text-decoration:none">{{ $product->name }}</a></h6>
                         <div class="price">
                             @if($product->sale_price)
-                                <span class="sale">${{ number_format($product->sale_price, 2) }}</span>
-                                <span class="original ms-1">${{ number_format($product->price, 2) }}</span>
+                                <span class="sale">DH{{ number_format($product->sale_price, 2) }}</span>
+                                <span class="original ms-1">DH{{ number_format($product->price, 2) }}</span>
                             @else
-                                <span>${{ number_format($product->price, 2) }}</span>
+                                <span>DH{{ number_format($product->price, 2) }}</span>
                             @endif
                         </div>
                         <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-2">

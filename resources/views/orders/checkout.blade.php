@@ -74,14 +74,14 @@
                                 <small class="text-muted d-block">{{ $item['size'] }} {{ $item['color'] }}</small>
                             @endif
                         </span>
-                        <span class="ms-2 text-nowrap">{{ $item['quantity'] }} × ${{ number_format($item['price'],2) }}</span>
+                        <span class="ms-2 text-nowrap">{{ $item['quantity'] }} × DH{{ number_format($item['price'],2) }}</span>
                     </div>
                     @endforeach
                     <hr>
-                    <div class="d-flex justify-content-between mb-1"><span>Subtotal</span><span>${{ number_format($total,2) }}</span></div>
-                    <div class="d-flex justify-content-between mb-3"><span>Shipping</span><span>{{ $shipping == 0 ? 'Free' : '$'.number_format($shipping,2) }}</span></div>
+                    <div class="d-flex justify-content-between mb-1"><span>Subtotal</span><span>DH{{ number_format($total,2) }}</span></div>
+                    <div class="d-flex justify-content-between mb-3"><span>Shipping</span><span>{{ $shipping == 0 ? 'Free' : 'DH'.number_format($shipping,2) }}</span></div>
                     <div class="d-flex justify-content-between fw-bold" style="font-size:1.1rem">
-                        <span>Total</span><span>${{ number_format($total+$shipping,2) }}</span>
+                        <span>Total</span><span>DH{{ number_format($total+$shipping,2) }}</span>
                     </div>
                 </div>
             </div>

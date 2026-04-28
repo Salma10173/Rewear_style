@@ -192,8 +192,8 @@
             <div class="col-md-4">
                 <h6>Contact</h6>
                 <p style="font-size:.85rem;color:#b8a89e;">
-                    <i class="fa fa-envelope me-2"></i>hello@rewear.ma<br>
-                    <i class="fa fa-phone me-2"></i>+212 522 000 000<br>
+                    <i class="fa fa-instagram me-2"></i>https://www.instagram.com/rewea_rstyle/<br>
+                    <i class="fa fa-phone me-2"></i>+212 522 350 70<br>
                     <i class="fa fa-location-dot me-2"></i>Casablanca, Morocco
                 </p>
             </div>

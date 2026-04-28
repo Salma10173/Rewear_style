@@ -28,16 +28,16 @@
                                 @if($item->size) Size: {{ $item->size }} @endif
                                 @if($item->color) · Color: {{ $item->color }} @endif
                             </small>
-                            <div style="font-size:.85rem">Qty: {{ $item->quantity }} × ${{ number_format($item->product_price,2) }}</div>
+                            <div style="font-size:.85rem">Qty: {{ $item->quantity }} × DH{{ number_format($item->product_price,2) }}</div>
                         </div>
-                        <div class="fw-medium">${{ number_format($item->subtotal,2) }}</div>
+                        <div class="fw-medium">DH{{ number_format($item->subtotal,2) }}</div>
                     </div>
                     @endforeach
 
                     <div class="text-end mt-3">
-                        <div class="text-muted" style="font-size:.88rem">Subtotal: ${{ number_format($order->subtotal,2) }}</div>
-                        <div class="text-muted" style="font-size:.88rem">Shipping: {{ $order->shipping == 0 ? 'Free' : '$'.number_format($order->shipping,2) }}</div>
-                        <div class="fw-bold mt-1" style="font-size:1.1rem">Total: ${{ number_format($order->total,2) }}</div>
+                        <div class="text-muted" style="font-size:.88rem">Subtotal: DH{{ number_format($order->subtotal,2) }}</div>
+                        <div class="text-muted" style="font-size:.88rem">Shipping: {{ $order->shipping == 0 ? 'Free' : 'DH'.number_format($order->shipping,2) }}</div>
+                        <div class="fw-bold mt-1" style="font-size:1.1rem">Total: DH{{ number_format($order->total,2) }}</div>
                     </div>
                 </div>
             </div>

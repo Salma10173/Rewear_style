@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    // ── Registration ──────────────────────────────────────────────────────────
+    // ── Registration ─────────────────────────────────────────────────────────
 
     public function showRegister()
     {
@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('shop.index')->with('success', 'Welcome to ReWear, ' . $user->name . '!');
+        return redirect()->route('shop.index')->with('success', 'Bienvenue sur ReWear, ' . $user->name . '!');
     }
 
     // ── Login ─────────────────────────────────────────────────────────────────
@@ -63,7 +63,7 @@ class AuthController extends Controller
         }
 
         throw ValidationException::withMessages([
-            'email' => 'These credentials do not match our records.',
+            'email' => 'Ces identifiants ne correspondent pas à nos enregistrements.',
         ]);
     }
 
